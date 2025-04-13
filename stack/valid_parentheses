@@ -1,0 +1,13 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        closeToOpen = { ")" : "(", "]" : "[", "}" : "{" } #dict 
+
+        for i in s:
+            if i in closeToOpen:
+                if stack and stack[-1] == closeToOpen[i]:
+                    stack.pop() #pop last item from stack move back
+            else:
+                stack.append(i) #lifo
+
+        return True if not stack else False #if stack is empty return true
